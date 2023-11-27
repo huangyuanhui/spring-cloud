@@ -30,3 +30,10 @@ eureka:
 user-service:
   ribbon:
     NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule
+
+# 配置负载均衡懒加载
+ribbon:
+  eager-load:
+    enabled: true # 开启饥饿加载
+    clients: user-service # 是集合，如果只有一份可以直接写！
+      #- user-service # 指定饥饿加载的服务名称，
