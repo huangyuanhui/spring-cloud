@@ -1,0 +1,17 @@
+server:
+  port: 8083  # 服务端口
+
+spring:
+  application:
+    # 服务名称，服务名称就是微服务的名称！每个服务注册的时候都要带上名字，就是则个服务名称
+    name: eureka-server
+
+# eureka注册中心也是一个微服务，
+# 问题：eureka为什么也要加地址信息，因为eureka也是一个微服务，所以eureka启动的时候
+# 会将自己也注册到eureka上，这是为了将来eureka集群之间通信用的，比如将来有了三个eureka，
+# 那么三个eureka之间会互相做注册，那么eureka之间就可以做数据交流了！
+# 所以defaultZone这里将来应该配的是eureka集群地址，多个用逗号隔开。
+eureka:
+  client:
+    service-url: # eureka的地址信息
+      defaultZone: http://127.0.0.1:8083/eureka
